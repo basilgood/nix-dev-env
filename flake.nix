@@ -23,6 +23,9 @@
           export PATH=$PATH:./node_modules/.bin
         '';
       };
+      vim = pkgs.mkShell {
+        buildInputs = with pkgs; [nodePackages.vim-language-server];
+      };
     });
   };
 }
