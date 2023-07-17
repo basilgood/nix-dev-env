@@ -15,7 +15,7 @@
       pkgs = nixpkgsFor.${system};
     in {
       default = pkgs.mkShell {
-        buildInputs = with pkgs; [alejandra statix nodejs_20];
+        buildInputs = with pkgs; [alejandra];
       };
       web = pkgs.mkShell {
         buildInputs = with pkgs; [nodejs_20];
