@@ -30,7 +30,7 @@
         '';
       };
       vim = pkgs.mkShell {
-        buildInputs = with pkgs; [nodePackages.vim-language-server];
+        buildInputs = with pkgs; [nodePackages.vim-language-server luajitPackages.lua-lsp];
       };
     });
   };
