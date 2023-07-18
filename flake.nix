@@ -18,7 +18,13 @@
         buildInputs = with pkgs; [alejandra];
       };
       web = pkgs.mkShell {
-        buildInputs = with pkgs; [nodejs_20 nodePackages.typescript-language-server nodePackages.fixjson yamlfix];
+        buildInputs = with pkgs; [
+          nodejs_20
+          nodePackages.typescript-language-server
+          nodePackages.fixjson
+          yamlfix
+          shfmt
+        ];
         shellHook = ''
           export PATH=$PATH:./node_modules/.bin
         '';
