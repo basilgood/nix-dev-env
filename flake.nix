@@ -20,8 +20,8 @@
       web = pkgs.mkShell {
         buildInputs = with pkgs; [
           nodejs_20
-          nodePackages.typescript-language-server
-          nodePackages.fixjson
+          nodePackages_latest.typescript-language-server
+          nodePackages_latest.fixjson
           yamlfix
           shfmt
         ];
@@ -30,7 +30,7 @@
         '';
       };
       vim = pkgs.mkShell {
-        buildInputs = with pkgs; [nodejs_20 nodePackages.vim-language-server luajitPackages.lua-lsp stylua];
+        buildInputs = with pkgs; [nodejs_20 nodePackages_latest.vim-language-server luajitPackages.lua-lsp stylua];
       };
     });
   };
