@@ -15,14 +15,15 @@
       pkgs = nixpkgsFor.${system};
     in {
       default = pkgs.mkShell {
-        buildInputs = with pkgs; [alejandra];
+        buildInputs = with pkgs; [alejandra nil statix];
       };
       web = pkgs.mkShell {
         buildInputs = with pkgs; [
           nodejs_20
           nodePackages_latest.typescript-language-server
-          nodePackages_latest.fixjson
+          jq
           yamlfix
+          yamllint
           shfmt
         ];
         shellHook = ''
