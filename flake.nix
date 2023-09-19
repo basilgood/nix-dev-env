@@ -31,7 +31,10 @@
         '';
       };
       vim = pkgs.mkShell {
-        buildInputs = with pkgs; [nodejs_20 nodePackages_latest.vim-language-server luajitPackages.lua-lsp stylua];
+        buildInputs = with pkgs; [nodejs_20 nodePackages_latest.vim-language-server];
+      };
+      nvim = pkgs.mkShell {
+        buildInputs = with pkgs; [lua54Packages.luacheck stylua];
       };
     });
   };
