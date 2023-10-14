@@ -34,7 +34,7 @@
         buildInputs = with pkgs; [nodejs_20 nodePackages_latest.vim-language-server];
       };
       nvim = pkgs.mkShell {
-        buildInputs = with pkgs; [lua54Packages.luacheck stylua];
+        buildInputs = with pkgs; [lua-language-server lua54Packages.luacheck stylua];
       };
     });
   };
