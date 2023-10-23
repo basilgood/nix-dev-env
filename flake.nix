@@ -1,24 +1,37 @@
 {
   description = "development environments";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    devshell.url = "github:numtide/devshell";
+  };
   outputs = {
     self,
     nixpkgs,
+    devshell,
   }: let
     supportedSystems = ["x86_64-linux"];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-    nixpkgsFor = forAllSystems (system: import nixpkgs {inherit system;});
+    nixpkgsFor = forAllSystems (system:
+      import nixpkgs {
+        inherit system;
+        overlays = [devshell.overlays.default];
+      });
   in {
     devShells = forAllSystems (system: let
       pkgs = nixpkgsFor.${system};
     in {
-      default = pkgs.mkShell {
-        buildInputs = with pkgs; [alejandra nil statix];
+      default = pkgs.devshell.mkShell {
+        packages = with pkgs; [alejandra nil];
+        env = [
+          {
+            name = "DEVSHELL_NO_MOTD";
+            value = 1;
+          }
+        ];
       };
-      web = pkgs.mkShell {
-        buildInputs = with pkgs; [
+      web = pkgs.devshell.mkShell {
+        packages = with pkgs; [
           nodejs_20
           nodePackages_latest.typescript-language-server
           jq
@@ -26,15 +39,36 @@
           yamllint
           shfmt
         ];
-        shellHook = ''
-          export PATH=$PATH:./node_modules/.bin
-        '';
+        env = [
+          {
+            name = "DEVSHELL_NO_MOTD";
+            value = 1;
+          }
+          {
+            name = "PATH";
+            prefix = "node_modules/.bin";
+          }
+        ];
       };
-      vim = pkgs.mkShell {
-        buildInputs = with pkgs; [nodejs_20 nodePackages_latest.vim-language-server];
+      nvim = pkgs.devshell.mkShell {
+        packages = with pkgs; [lua-language-server lua54Packages.luacheck stylua];
+        env = [
+          {
+            name = "DEVSHELL_NO_MOTD";
+            value = 1;
+          }
+        ];
       };
-      nvim = pkgs.mkShell {
-        buildInputs = with pkgs; [lua-language-server lua54Packages.luacheck stylua];
+      rust = pkgs.devshell.mkShell {
+        name = "rust";
+        imports = ["${devshell}/extra/language/rust.nix"];
+        packages = with pkgs; [rust-analyzer];
+        env = [
+          {
+            name = "RUST_BACKTRACE";
+            value = "1";
+          }
+        ];
       };
     });
   };
