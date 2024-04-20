@@ -37,7 +37,6 @@
           nodePackages_latest.jsonlint
           vscode-langservers-extracted
           jq
-          yamlfix
           yamllint
           shfmt
         ];
