@@ -33,8 +33,8 @@
       web = pkgs.devshell.mkShell {
         packages = with pkgs; [
           nodejs_20
-          nodePackages_latest.typescript-language-server
-          nodePackages_latest.jsonlint
+          nodePackages.typescript-language-server
+          nodePackages.jsonlint
           vscode-langservers-extracted
           jq
           yamllint
