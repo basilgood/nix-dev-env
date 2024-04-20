@@ -47,6 +47,10 @@
             value = 1;
           }
           {
+            name = "PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS";
+            value = 1;
+          }
+          {
             name = "PATH";
             prefix = "node_modules/.bin";
           }
