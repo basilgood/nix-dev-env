@@ -22,7 +22,7 @@
       pkgs = nixpkgsFor.${system};
     in {
       default = pkgs.devshell.mkShell {
-        packages = with pkgs; [alejandra nil];
+        packages = with pkgs; [alejandra nixd];
         env = [
           {
             name = "DEVSHELL_NO_MOTD";
