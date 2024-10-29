@@ -39,6 +39,7 @@
           jq
           yamllint
           shfmt
+          azure-storage-azcopy
         ];
         env = [
           {
