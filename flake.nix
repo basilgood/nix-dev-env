@@ -57,7 +57,7 @@
         ];
       };
       nvim = pkgs.devshell.mkShell {
-        packages = with pkgs; [lua-language-server lua54Packages.luacheck stylua];
+        packages = with pkgs; [lua-language-server lua54Packages.luacheck stylua gcc];
         env = [
           {
             name = "DEVSHELL_NO_MOTD";
