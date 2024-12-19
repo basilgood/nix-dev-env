@@ -36,6 +36,7 @@
           nodePackages.typescript-language-server
           nodePackages.jsonlint
           vscode-langservers-extracted
+          vtsls
           jq
           yamllint
           shfmt
