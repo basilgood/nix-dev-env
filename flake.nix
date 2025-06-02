@@ -39,6 +39,8 @@
             nodejs_22
             nodePackages.typescript-language-server
             vscode-langservers-extracted
+            yaml-language-server
+            helm-ls
             vtsls
             jq
             yamllint
