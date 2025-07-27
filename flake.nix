@@ -43,6 +43,7 @@
             helm-ls
             vtsls
             jq
+            gojq
             yamllint
             shfmt
             azure-storage-azcopy
