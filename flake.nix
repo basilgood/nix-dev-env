@@ -45,6 +45,7 @@
             jq
             gojq
             yamllint
+            libxml2
             shfmt
             azure-storage-azcopy
           ];
