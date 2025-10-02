@@ -68,6 +68,7 @@
           packages = with pkgs; [
             lua-language-server
             lua54Packages.luacheck
+            tree-sitter
             stylua
             gcc
             gnumake
