@@ -36,7 +36,7 @@
         };
         devShells.web = pkgs.devshell.mkShell {
           packages = with pkgs; [
-            nodejs_22
+            nodejs_24
             nodePackages.typescript-language-server
             vscode-langservers-extracted
             yaml-language-server
