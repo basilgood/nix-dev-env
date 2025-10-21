@@ -4,25 +4,23 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     devshell.url = "github:numtide/devshell";
-    flake-utils.url = "github:numtide/flake-utils";
   };
   outputs =
     {
       devshell,
-      flake-utils,
       nixpkgs,
       ...
     }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ devshell.overlays.default ];
-        };
-      in
-      {
-        devShells.default = pkgs.devshell.mkShell {
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ devshell.overlays.default ];
+      };
+    in
+    {
+      devShells.${system} = {
+        default = pkgs.devshell.mkShell {
           packages = with pkgs; [
             nixfmt-rfc-style
             nixd
@@ -34,7 +32,7 @@
             }
           ];
         };
-        devShells.web = pkgs.devshell.mkShell {
+        web = pkgs.devshell.mkShell {
           packages = with pkgs; [
             nodejs_24
             nodePackages.typescript-language-server
@@ -64,7 +62,7 @@
             }
           ];
         };
-        devShells.nvim = pkgs.devshell.mkShell {
+        nvim = pkgs.devshell.mkShell {
           packages = with pkgs; [
             lua-language-server
             lua54Packages.luacheck
@@ -80,7 +78,7 @@
             }
           ];
         };
-        devShells.rust = pkgs.devshell.mkShell {
+        rust = pkgs.devshell.mkShell {
           name = "rust";
           imports = [ "${devshell}/extra/language/rust.nix" ];
           packages = with pkgs; [ rust-analyzer ];
@@ -91,6 +89,6 @@
             }
           ];
         };
-      }
-    );
+      };
+    };
 }
