@@ -58,7 +58,7 @@
             }
             {
               name = "PATH";
-              prefix = "node_modules/.bin";
+              eval = "$PATH:node_modules/.bin";
             }
           ];
         };
