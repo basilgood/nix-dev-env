@@ -94,5 +94,15 @@
           ];
         };
       };
+      packages.${system} = {
+        flattenc = pkgs.writeShellApplication {
+          name = "autofollowc";
+          text = "exec nix run github:fzakaria/nix-auto-follow -- -c flake.lock \"$@\"";
+        };
+        flatteni = pkgs.writeShellApplication {
+          name = "autofollowi";
+          text = "exec nix run github:fzakaria/nix-auto-follow -- -i flake.lock \"$@\"";
+        };
+      };
     };
 }
