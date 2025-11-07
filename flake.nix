@@ -49,6 +49,7 @@
             yamllint
             libxml2
             shfmt
+            shellcheck
             azure-storage-azcopy
           ];
           env = [
