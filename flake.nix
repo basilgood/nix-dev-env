@@ -25,7 +25,7 @@
       devShells.${system} = {
         default = pkgs.devshell.mkShell {
           packages = with pkgs; [
-            nixfmt-rfc-style
+            nixfmt
             nixd
             nil
           ];
@@ -42,10 +42,10 @@
             nodePackages.typescript-language-server
             vscode-langservers-extracted
             yaml-language-server
+            docker-language-server
             helm-ls
             vtsls
             jq
-            gojq
             yamllint
             libxml2
             shfmt
