@@ -42,11 +42,12 @@
             nodePackages.typescript-language-server
             vscode-langservers-extracted
             yaml-language-server
-            docker-language-server
             helm-ls
             vtsls
             jq
             yamllint
+            hadolint
+            dockerfmt
             libxml2
             shfmt
             shellcheck
