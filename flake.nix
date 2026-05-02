@@ -53,6 +53,7 @@
             shfmt
             shellcheck
             azure-storage-azcopy
+            python3
           ];
           env = [
             {
