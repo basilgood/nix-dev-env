@@ -39,7 +39,7 @@
         web = pkgs.devshell.mkShell {
           packages = with pkgs; [
             nodejs_24
-            nodePackages.typescript-language-server
+            typescript-language-server
             typescript-go
             vscode-langservers-extracted
             yaml-language-server
