@@ -40,7 +40,7 @@
           packages = with pkgs; [
             nodejs_24
             typescript-language-server
-            typescript-go
+            typescript
             vscode-langservers-extracted
             yaml-language-server
             helm-ls
