@@ -46,6 +46,9 @@
             helm-ls
             vtsls
             jq
+            yq-go
+            actionlint
+            actions-languageserver
             yamllint
             hadolint
             dockerfmt
